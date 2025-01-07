@@ -1,6 +1,5 @@
 "use client"
 import { SideBarItem } from "./SideBarItem";
-import { IoIosArrowDown } from "react-icons/io";
 import { MdOutlineDashboard } from "react-icons/md";
 import { BiArrowBack, BiTransfer } from "react-icons/bi";
 import { MdOutlineArrowOutward } from "react-icons/md";

@@ -14,7 +14,7 @@ interface FormData {
     email: string
 }
 
-export default function signup() {
+export default function Signup() {
     const router = useRouter();
     const [form, setForm] = useState<FormData>({ name: '', phoneNumber: '', password: '', email: '' });
     const [error, setError] = useState("");

@@ -1,7 +1,7 @@
 import prisma from "@/app/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function POST(request: NextRequest) {
    const { userId, token, amount
    }: {
       userId: string; token: string; amount: number

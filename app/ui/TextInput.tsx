@@ -9,8 +9,8 @@ export const TextInput = ({
 }: {
     label: string;
     placeholder: string;
-    type: any
-    input: (value: any) => void;
+    type: 'text' | 'password' | 'email' | 'number'
+    input: (value: string) => void;
     value: string
 }) => {
     return <div className="mt-3">
