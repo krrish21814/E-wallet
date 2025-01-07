@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
       ]);
 
       return NextResponse.json({ message: 'Captured' }, { status: 200 });
-   } catch (error) {
+   } catch {
       return NextResponse.json({ error: 'Error while processing transaction' }, { status: 400 });
    }
 }

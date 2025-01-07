@@ -43,7 +43,7 @@ export const createOnRampTxn = async ({ amount, provider }:
             });
         });
         return { success: true, data: "Balance Added" }
-    } catch (error) {
+    } catch {
         return { success: false, data: "An error occurred. Please try again" }
     }
 }

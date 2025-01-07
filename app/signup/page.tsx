@@ -60,7 +60,7 @@ export default function Signup() {
 
             <div className="w-full md:w-1/2 bg-gradient-to-r from-[#4f3c7d] to-[#6a51a6] text-white flex items-center justify-center p-6 md:p-10">
                 <div className="text-lg md:text-xl font-semibold text-center leading-relaxed">
-                    "An investment in knowledge pays the best interest." – Benjamin Franklin
+                &quot;An investment in knowledge pays the best interest.&quot; – Benjamin Franklin
                 </div>
             </div>
 

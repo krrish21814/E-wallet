@@ -17,7 +17,7 @@ export const updateName = async ({ name }: {
             data: { name: name }
         })
         return { success: true, data: "Name updated successfully" }
-    } catch (error) {
+    } catch {
         return { success: false, data: "Unexpected Error" }
     }
 

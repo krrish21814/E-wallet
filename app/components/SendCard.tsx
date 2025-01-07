@@ -27,7 +27,7 @@ export const SendCard = () => {
                 setPassword("");
                 setAmount("");
             }
-        } catch (error) {
+        } catch{
             setIsError(true);
             setMessage("An unexpected error occurred. Please try again.");
         } finally {

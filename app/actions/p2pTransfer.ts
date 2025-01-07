@@ -69,7 +69,7 @@ export const p2pTransfer = async (amount: number, password: string, to: string) 
             });
         })
         return { success: true, data: "Transfer successfull" };
-    } catch (error) {
+    } catch {
         return { success: false, data: "An unexpected error occurred" }
     }
 }

@@ -41,7 +41,7 @@ export const updatePassword = async ({ currentPassword, newPassword }: {
         });
 
         return { success: true, data: "Pasword updated successfully" }
-    } catch (error) {
+    } catch {
         return {
             success: false,
             data: "Failed to update password. Please try again later."
