@@ -1,26 +1,34 @@
+import { refresh } from "@/app/actions/refresh";
 import { AddMoneyCard } from "@/app/components/AddMoneyCard";
 import { BalanceCard } from "@/app/components/BalanceCard";
 import { Card } from "@/app/components/Card";
+import { OnRampTransactions } from "@/app/components/OnRampTransactions";
 
+export default function Transfer() {
 
-
-export default function transfer(){
-    return <div className="w-screen -mt-60">
-             <div className="text-4xl text-[#6a51a6] pt-24 mb-8 font-bold">
-              Transfer
-             </div>
-
-             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 p-4">
-              
-              <div className="mb-40 ">
-                <AddMoneyCard/>
-              </div>
-
-             <Card>
-              <BalanceCard/>
-             </Card>
-              
-             </div>
-            </div>
-
+  return (
+    <div className="w-full p-4 -mt-12 sm:-mt-32">
+      <div className="text-3xl sm:text-4xl text-[#6a51a6] pt-24 mb-8 font-bold">
+        Transfer
+      </div>
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div>
+          <AddMoneyCard />
+        </div>
+        <Card>
+          <div className="mb-2">
+            <BalanceCard />
+          </div>
+          <div>
+            <OnRampTransactions />
+          </div>
+          <div>
+            <button
+              className="bg-[#6a51a6] text-white hover:bg-[#4f3c7d] font-bold py-2 px-4 mt-3 ml-1 border border-blue-700 rounded-lg "
+              onClick={refresh}>Refresh</button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
 }

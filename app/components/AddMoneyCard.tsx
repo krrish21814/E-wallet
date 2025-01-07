@@ -12,7 +12,6 @@ const SUPPORTED_BANKS = [{
     redirectUrl: "https://www.axisbank.com"
 }];
 
-
 export const AddMoneyCard = () => {
     const [redirectUrl, setRedirectUrl] = useState(SUPPORTED_BANKS[0]?.redirectUrl);
     const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name || " ");
@@ -38,40 +37,44 @@ export const AddMoneyCard = () => {
         }
     }
 
-    return (<div className="">
+    return (<div>
         <Card title="Add money">
-            <TextInput label="Amount" value={amount} placeholder="Enter amount" type="number" input={(value) => {
-                setAmount(value);
-                
-            }} />
+            <TextInput
+                label="Amount"
+                value={amount}
+                placeholder="Enter amount"
+                type="number"
+                input={(value) => {
+                    setAmount(value);
+
+                }} />
             <div>
                 <select
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
-                onChange={(e) => {
-                    const selectedBank = SUPPORTED_BANKS.find(x => x.name === e.target.value)
-                    setmessage("")
-                    setRedirectUrl(selectedBank?.redirectUrl || "")
-                    setProvider(selectedBank?.name || "");
-                }}>
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
+                    onChange={(e) => {
+                        const selectedBank = SUPPORTED_BANKS.find(x => x.name === e.target.value)
+                        setmessage("")
+                        setRedirectUrl(selectedBank?.redirectUrl || "")
+                        setProvider(selectedBank?.name || "");
+                    }}>
                     {SUPPORTED_BANKS.map((bank) => (
                         <option value={bank.name} key={bank.name}>{bank.name}</option>
                     ))}
                 </select>
 
             </div>
-            <div  className="flex justify-center pt-4 relative">
-            <button onClick={handleSubmit}   className={`relative bg-[#6a51a6] text-white hover:bg-[#4f3c7d] font-bold py-2 px-4 border border-blue-700 rounded-lg ${loading ? "opacity-50 cursor-not-allowed" : ""}`}>
-            {loading ? "Processing..." : "Add Money"} 
-            </button> 
+            <div className="flex justify-center pt-4 relative">
+                <button onClick={handleSubmit} className={`relative bg-[#6a51a6] text-white hover:bg-[#4f3c7d] font-bold py-2 px-4 border border-blue-700 rounded-lg ${loading ? "opacity-50 cursor-not-allowed" : ""}`}>
+                    {loading ? "Processing..." : "Add Money"}
+                </button>
             </div>
             <div className="flex">
-            {message && (
-                <div className={`${isError ? "text-red-600" : "text-green-600"}  `}>
-                    {message}
-                </div>
-            )}
+                {message && (
+                    <div className={`${isError ? "text-red-600" : "text-green-600"}  `}>
+                        {message}
+                    </div>
+                )}
             </div>
-           
         </Card>
-        </div> )
+    </div>)
 }

@@ -8,9 +8,8 @@ export function Card({
     hover?: boolean
 }) {
     return (
-        <div className={`w-full p-4 bg-white rounded-lg shadow-md ${hover?" hover:scale-105 hover:shadow-lg" : ""}  transition-all duration-300`}>
-
-            <h1 className={`text-xl ${title? "border-b mb-5" : ""}  pb-2 font-medium `}>
+        <div className={`w-full p-4 bg-white rounded-lg shadow-md ${hover ? " hover:scale-105 hover:shadow-lg" : ""}  transition-all duration-300`}>
+            <h1 className={`text-xl ${title ? "border-b mb-5" : ""}  pb-2 font-medium `}>
                 {title}
             </h1>
 

@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { userSchema } from "../utils/validation";
 import { ZodError } from "zod";
 import Link from "next/link";
-import { LandingTopBar } from "../components/LandingTopBar";
 
 interface FormData {
     name: string,
@@ -17,7 +16,7 @@ interface FormData {
 
 export default function signup() {
     const router = useRouter();
-    const [form, setForm] = useState<FormData>({ name: '', phoneNumber: '', password: '', email: ''});
+    const [form, setForm] = useState<FormData>({ name: '', phoneNumber: '', password: '', email: '' });
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +55,7 @@ export default function signup() {
     }
 
     return <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-       
+
         <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row transform transition-all duration-500 hover:scale-105 hover:shadow-xl">
 
             <div className="w-full md:w-1/2 bg-gradient-to-r from-[#4f3c7d] to-[#6a51a6] text-white flex items-center justify-center p-6 md:p-10">
@@ -74,7 +73,6 @@ export default function signup() {
                         {error}
                     </div>}
 
-
                 <form className="flex flex-col space-y-5" onSubmit={handleSubmit}>
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
@@ -86,10 +84,10 @@ export default function signup() {
                             type="text"
                             placeholder="Name"
                             value={form.name}
-                            onChange={(e) =>{
+                            onChange={(e) => {
                                 handleChange(e)
                                 setError("")
-                                }} />
+                            }} />
                     </div>
 
                     <div>
@@ -102,10 +100,10 @@ export default function signup() {
                             type="text"
                             placeholder="Email"
                             value={form.email}
-                            onChange={(e) =>{
+                            onChange={(e) => {
                                 handleChange(e)
                                 setError("")
-                                }} />
+                            }} />
                     </div>
 
                     <div>
@@ -119,10 +117,10 @@ export default function signup() {
                             pattern="[0-9]*"
                             placeholder="Phone number"
                             value={form.phoneNumber}
-                            onChange={(e) =>{
+                            onChange={(e) => {
                                 handleChange(e)
                                 setError("")
-                                }} />
+                            }} />
                     </div>
 
                     <div>
@@ -135,10 +133,10 @@ export default function signup() {
                             type="password"
                             placeholder="Password"
                             value={form.password}
-                            onChange={(e) =>{
+                            onChange={(e) => {
                                 handleChange(e)
                                 setError("")
-                                }} />
+                            }} />
                     </div>
 
                     <div className="text-center mt-4 flex justify-center items-center space-x-2">
@@ -158,7 +156,6 @@ export default function signup() {
                         {loading ? "Signing up..." : "Sign Up"}
                     </button>
                 </form>
-
 
             </div>
         </div>

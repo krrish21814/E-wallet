@@ -30,11 +30,10 @@ export default function RootLayout({
       >
         <div className="bg-slate-100">
           <Providers>
-          {children}
+            {children}
           </Providers>
-
         </div>
-        
+
       </body>
     </html>
   );

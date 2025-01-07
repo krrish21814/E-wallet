@@ -3,13 +3,11 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "../lib/auth"
 import prisma from "../prisma"
-import bcrypt from "bcrypt";
 
 export const createOnRampTxn = async ({ amount, provider }:
     {
         amount: number,
         provider: string,
-        
     }) => {
 
     const token = Math.random().toString();
@@ -23,30 +21,29 @@ export const createOnRampTxn = async ({ amount, provider }:
         return { success: false, data: "Enter valid amount" }
     }
 
-    try{
-
-    await prisma.$transaction(async (tx) => {
-        await tx.balance.update({
-            where: {
-                userId: Number(userId)
-            },
-            data: {
-                locked: { increment: amount }
-            }
+    try {
+        await prisma.$transaction(async (tx) => {
+            await tx.balance.update({
+                where: {
+                    userId: Number(userId)
+                },
+                data: {
+                    locked: { increment: amount }
+                }
+            });
+            await tx.onRampTransaction.create({
+                data: {
+                    userId: Number(userId),
+                    amount,
+                    status: "Processing",
+                    startTime: new Date(),
+                    provider,
+                    token
+                }
+            });
         });
-        await tx.onRampTransaction.create({
-            data: {
-                userId: Number(userId),
-                amount,
-                status: "Processing",
-                startTime: new Date(),
-                provider,
-                token
-            }
-        });
-    });
-    return { success: true, data: "Balance Added" }
-    }catch(error){
-        return{success: false, data:"An error occurred. Please try again"}
+        return { success: true, data: "Balance Added" }
+    } catch (error) {
+        return { success: false, data: "An error occurred. Please try again" }
     }
 }
