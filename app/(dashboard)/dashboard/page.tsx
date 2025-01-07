@@ -3,7 +3,7 @@ import { Card } from "@/app/components/Card";
 import { user } from "@/app/actions/user";
 import { BalanceCard } from "@/app/components/BalanceCard";
 import { OnRampTransactions } from "@/app/components/OnRampTransactions";
-import prisma from "@/app/prisma";
+import prisma from "@/prisma";
 
 export default async function dashboard() {
     const userSession = await user();

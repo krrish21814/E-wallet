@@ -1,7 +1,7 @@
 "use server"
 
 import { Prisma } from "@prisma/client";
-import prisma from "../prisma";
+import prisma from "../../prisma";
 import { user } from "./user"
 import bcrypt from "bcrypt";
 

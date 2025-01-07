@@ -1,5 +1,5 @@
 import { user } from "../actions/user";
-import prisma from "../prisma";
+import prisma from "../../prisma";
 import { Card } from "./Card";
 
 export const UserInfoCard = async () => {

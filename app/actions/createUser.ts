@@ -1,6 +1,6 @@
 "use server"
 
-import prisma from "../prisma"
+import prisma from "../../prisma"
 import bcrypt from "bcrypt"
 export const createUser = async (
     data: {

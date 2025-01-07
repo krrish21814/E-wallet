@@ -1,6 +1,6 @@
 "use server"
 import bcrypt from "bcrypt"
-import prisma from "../prisma";
+import prisma from "../../prisma";
 import { user } from "./user"
 
 export const updatePassword = async ({ currentPassword, newPassword }: {

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { user } from "../actions/user"
 import { Avatar } from "./Avatar"
-import prisma from "../prisma";
+import prisma from "../../prisma";
 
 export const AppBar = async () => {
 
