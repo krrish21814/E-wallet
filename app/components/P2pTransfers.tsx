@@ -2,8 +2,18 @@ import { getP2pTransfers } from "../actions/getP2pTransfers"
 import { user } from "../actions/user"
 import { Card } from "./Card"
 
+type P2PTransfer = {
+    fromUserName: string | null | undefined;
+    toUserName: string | null | undefined;
+    fromUserId: number;
+    toUserId: number;
+    time: Date;
+    amount: number;
+}
+
+
 export const P2pTransfers = async ({ scroll = false }: { scroll?: boolean }) => {
-    const transfers = await getP2pTransfers()
+    const transfers: P2PTransfer[] = await getP2pTransfers()
     const userInfo = await user();
     const currentUser = userInfo?.user.id;
 
