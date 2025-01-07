@@ -1,6 +1,5 @@
 "use server"
 
-import { p2pTransfer } from "@prisma/client";
 import prisma from "../prisma";
 import { user } from "./user"
 
@@ -19,7 +18,7 @@ export const getP2pTransfers = async () => {
     });
 
     const namedTransactions = await Promise.all(
-        transfers.map(async (t: p2pTransfer) => {
+        transfers.map(async (t:{ fromUserId: number; toUserId: number; timestamp: Date; amount: number }) => {
             const fromUser = await prisma.user.findUnique({
                 where: { id: t.fromUserId },
                 select: { name: true }
