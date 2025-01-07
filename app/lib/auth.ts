@@ -2,8 +2,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions, Session } from "next-auth";
 import prisma from "@/app/prisma";
 import bcrypt from "bcrypt";
-import { Prisma } from "@prisma/client";
 import { JWT } from "next-auth/jwt";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
                         number: existingUser.phone
                     }
                 } catch (error) {
-                    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+                    if (error instanceof PrismaClientKnownRequestError) {
                         throw new Error("Database error occurred. Please try again.")
                     } else {
                         throw error;
