@@ -1,5 +1,6 @@
 "use server"
 
+import { Prisma } from "@prisma/client";
 import prisma from "../prisma";
 import { user } from "./user"
 import bcrypt from "bcrypt";
@@ -47,7 +48,7 @@ export const p2pTransfer = async (amount: number, password: string, to: string) 
             return { success: false, data: "Incorrect password" };
         }
 
-        await prisma.$transaction(async (tx) => {
+        await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
             await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
 
             await tx.balance.update({

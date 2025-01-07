@@ -3,6 +3,7 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "../lib/auth"
 import prisma from "../prisma"
+import { Prisma } from "@prisma/client"
 
 export const createOnRampTxn = async ({ amount, provider }:
     {
@@ -22,7 +23,7 @@ export const createOnRampTxn = async ({ amount, provider }:
     }
 
     try {
-        await prisma.$transaction(async (tx) => {
+        await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
             await tx.balance.update({
                 where: {
                     userId: Number(userId)
