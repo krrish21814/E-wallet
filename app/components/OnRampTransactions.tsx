@@ -1,8 +1,14 @@
 import { getOnrampTxns } from "../actions/getOnrampTxns"
 import { Card } from "./Card"
 
+type Txn = {
+   startTime: Date;
+   status: string;
+   amount: number;
+}
+
 export const OnRampTransactions = async ({ scroll = false }: { scroll?: boolean }) => {
-   const txns = await getOnrampTxns()
+   const txns: Txn[] = await getOnrampTxns() 
 
    if (txns.length < 1) {
       return <Card>
@@ -14,7 +20,7 @@ export const OnRampTransactions = async ({ scroll = false }: { scroll?: boolean 
    return <div>
       <Card hover={false} title="Bank Transactions">
          <div className={`${scroll ? "max-h-96" : "max-h-56"} overflow-y-auto`}>
-            {txns.slice(-10).reverse().map((txn, index) => (
+            {txns.slice(-10).reverse().map((txn: Txn, index: number) => (
                <div className="grid grid-cols-3 p-2 " key={index}>
 
                   <div className="">
